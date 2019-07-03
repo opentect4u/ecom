@@ -54,5 +54,6 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
 $route['(:any)'] = '$1s';
-$route['(:any)/(:any)'] = '$1s/$2';
-$route['(:any)/(:any)/(:any)'] = '$1s/$2s/$3';
+$route['login/(:any)'] = 'logins/$1';
+$route['(:any)/(:any)'] = 'products/$2';
+$route['(:any)/(:any)/(:any)'] = 'items';

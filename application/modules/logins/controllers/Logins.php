@@ -89,11 +89,11 @@ class Logins extends CI_Controller {
 
             $this->session->unset_userdata('ecmo-loggedin');
 
-            redirect($this->session->userdata('cur_url'));
+            redirect(site_url());
 
         }else{
 
-            redirect($this->session->userdata('cur_url'));
+            redirect(site_url());
 
         }
            
