@@ -55,9 +55,9 @@ $this->session->set_userdata('cur_url', ($_SERVER['QUERY_STRING'])? current_url(
               <li class="nav-item">
                 <a class="nav-link" href="javascript: void(0);" id="login" data-toggle="modal" data-target="#exampleModalCenter">Login & Sign Up</a>
               </li>
-            <?php
+          <?php
               }
-            ?>
+          ?>
         </ul>
       </div>
     </div>
