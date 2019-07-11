@@ -30,31 +30,31 @@
   <div class="container">
     
     <?php
-        if(!$this->session->userdata('ecmo-loggedin')){
+      if(!$this->session->userdata('ecmo-loggedin')){
     ?>
 
     <a href="javascript: void(0);" id="login" data-toggle="modal" data-target="#exampleModalCenter">Click Here to Login</a>
-
     <?php
-        }
-        else{
-          $i = 1;
-          foreach($addresses as $address){
+      }
+      else{
+        $i = 1;
+        foreach($addresses as $address){
     ?>
 
         <div class="row">
           <input type="radio" <?php echo ($i == 1)? 'checked' : ''; ?> name="address">
-          <?php
-            echo $address->address.' '.$address->pin;
-          ?>
+    <?php
+          echo $address->address.' '.$address->pin;
+    ?>
         </div>
 
     <?php
-            $i++;
-          }
+          $i++;
         }
     ?>
-
-    <button type="submit" class="btn btn-primary">Delivery Here</button>
+      <button type="submit" class="btn btn-primary">Delivery Here</button>
+    <?php
+      }
+    ?>
   </div>
   <login></login>

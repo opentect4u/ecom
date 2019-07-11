@@ -30,4 +30,20 @@ class Checkouts extends CI_Controller {
 		$this->load->view('footer');
 
 	}
+
+	public function addtocart(){
+
+		$maxCode = $this->Checkout->f_get_particulars('td_cart', array('MAX(id) + 1 max_cd'), array("user_id" => $this->session->userdata('ecmo-loggedin')->user_id), 0)->max_cd;
+		
+		$data_array = array(
+			"user_id" => $this->session->userdata('ecmo-loggedin')->user_id,
+			"prod_id" => $this->input->post('prodId'),
+			"id" => $maxCode
+		);
+
+		$this->Checkout->f_insert($data_array);
+
+		echo 1;
+		
+	}
 }

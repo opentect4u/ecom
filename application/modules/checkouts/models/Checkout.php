@@ -31,5 +31,46 @@ class Checkout extends CI_Model {
 
     }
 
+    //For inserting row
+
+    public function f_insert($table_name, $data_array) {
+
+        $this->db->insert($table_name, $data_array);
+
+        return;
+
+    }
+
+    //For Inserting Multiple Row
+
+    public function f_insert_multiple($table_name, $data_array){
+
+        $this->db->insert_batch($table_name, $data_array);
+
+        return;
+
+    }
+
+    //For Editing row
+
+    public function f_edit($table_name, $data_array, $where) {
+
+        $this->db->where($where);
+        $this->db->update($table_name, $data_array);
+
+        return;
+
+    }
+
+    //For Deliting row
+
+    public function f_delete($table_name, $where) {
+
+        $this->db->delete($table_name, $where);
+
+        return;
+
+    }
+
 }
 ?>

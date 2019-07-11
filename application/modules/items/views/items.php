@@ -31,6 +31,7 @@ img{
     <div class="row ">
 
         <div class="row item">
+            <span class="hidden"><?php echo $prodId; ?></span>
             <img class="card-img-top" src="http://placehold.it/700x400" alt="">
         </div>
         
@@ -42,20 +43,23 @@ img{
         </div>
         
     </div>
-    <form action="<?php echo site_url('checkout'); ?>" method="POST">
-        <div class="row">
-            <button type="button" class="btn btn-warning" id="addtocart">Add To Cart</button>
-            <button type="button" style="margin-left: 65%;" class="btn btn-success" id="buynow">Buy Now</button>
-        </div>
-    </form>
-
+    <div class="row">
+        <button type="button" class="btn btn-warning" id="addtocart">Add To Cart</button>
+        <button type="button" style="margin-left: 65%;" class="btn btn-success" id="buynow">Buy Now</button>
+    </div>
 </div>
 
 <script>
 $(document).ready(function(){
     $('#addtocart').click(function(){
-        $.post('<?php echo site_url('checkout'); ?>');
-        window.location = "<?php echo site_url('checkout'); ?>";
+        $.post('<?php echo site_url('checkout/addtocart'); ?>', {
+            prodId: $('span').text()
+        }).done(function(data){
+
+        });
+
+        console.log($('span').text());
+        //window.location = "<?php echo site_url('checkout'); ?>";
     });
 
     $('#buynow').click(function(){
