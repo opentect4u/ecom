@@ -33,7 +33,7 @@ class Checkouts extends CI_Controller {
 
 	public function addtocart(){
 
-		$maxCode = $this->Checkout->f_get_particulars('td_cart', array('MAX(id) + 1 max_cd'), array("user_id" => $this->session->userdata('ecmo-loggedin')->user_id), 0)->max_cd;
+		$maxCode = $this->Checkout->f_get_particulars('td_cart', array('(ifnull(MAX(id), 0) + 1) max_cd'), array("user_id" => $this->session->userdata('ecmo-loggedin')->user_id), 1)->max_cd;
 		
 		$data_array = array(
 			"user_id" => $this->session->userdata('ecmo-loggedin')->user_id,
@@ -41,9 +41,26 @@ class Checkouts extends CI_Controller {
 			"id" => $maxCode
 		);
 
-		$this->Checkout->f_insert($data_array);
+		$this->Checkout->f_insert('td_cart', $data_array);
 
-		echo 1;
+		exit;
 		
+	}
+
+	public function viewcart(){
+		if($this->session->userdata('ecmo-loggedin')){
+
+			$data['viewcart'] = $this->Checkout->f_get_particulars('td_cart', NULL, array('user_id' => $this->session->userdata('ecmo-loggedin')->user_id), 0);
+
+			$this->load->view('viewcart', $data);
+
+		}
+		else{
+
+			$this->load->view('viewcart');
+			
+		}
+
+		$this->load->view('footer');
 	}
 }

@@ -12,3 +12,4 @@ class Items extends CI_Controller {
 		$this->load->view('footer');
 	}
 }
+?>

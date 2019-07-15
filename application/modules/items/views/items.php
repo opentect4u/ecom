@@ -52,18 +52,18 @@ img{
 <script>
 $(document).ready(function(){
     $('#addtocart').click(function(){
-        $.post('<?php echo site_url('checkout/addtocart'); ?>', {
-            prodId: $('span').text()
-        }).done(function(data){
-
-        });
-
-        console.log($('span').text());
-        //window.location = "<?php echo site_url('checkout'); ?>";
+        <?php if($this->session->userdata('ecmo-loggedin')){ ?>
+            $.post('<?php echo site_url('checkout/addtocart'); ?>', {
+                prodId: $('span').text()
+            });
+        <?php
+        }
+        ?>
+        window.location = "<?php echo site_url('checkout/viewcart'); ?>";
     });
 
     $('#buynow').click(function(){
-        alert('buynow');
+        window.location = "<?php echo site_url('checkout'); ?>";
     });
 });
 </script>
