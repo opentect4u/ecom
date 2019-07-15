@@ -41,20 +41,19 @@
         foreach($viewcart as $cart){
     ?>
 
-        <div class="row">
+      <div class="row">
         
     <?php
-          echo $cart->category_id.' '.$cart->product_id;
+        echo $cart->category_id.' '.$cart->product_id;
     ?>
-        </div>
+        <button type="button" class="btn btn-success">Place Order</button>
+        <button type="button" class="btn btn-danger">Remove Order</button>
+      </div>
 
     <?php
           $i++;
         }
-    ?>
-      <button type="button" class="btn btn-success">Place Order</button>
-      <button type="button" class="btn btn-danger">Remove Order</button>
-    <?php
+    
       }
     ?>
   </div>

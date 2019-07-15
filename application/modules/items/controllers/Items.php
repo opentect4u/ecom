@@ -7,6 +7,7 @@ class Items extends CI_Controller {
 	{
 		
 		$this->load->view('header');
+		$data['catgId'] = $this->uri->segment(2);
 		$data['prodId'] = $this->uri->segment(3);
 		$this->load->view('items', $data);
 		$this->load->view('footer');

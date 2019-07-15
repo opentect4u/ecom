@@ -31,7 +31,8 @@ img{
     <div class="row ">
 
         <div class="row item">
-            <span class="hidden"><?php echo $prodId; ?></span>
+                <span class="hidden"><?php echo $prodId; ?></span>
+                <span class="hidden"><?php echo $catgId; ?></span>
             <img class="card-img-top" src="http://placehold.it/700x400" alt="">
         </div>
         
@@ -54,6 +55,7 @@ $(document).ready(function(){
     $('#addtocart').click(function(){
         <?php if($this->session->userdata('ecmo-loggedin')){ ?>
             $.post('<?php echo site_url('checkout/addtocart'); ?>', {
+                catgId: $('span').text()
                 prodId: $('span').text()
             });
         <?php
