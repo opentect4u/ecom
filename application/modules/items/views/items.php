@@ -24,6 +24,10 @@ img{
 .center{
     margin-left: 22%;
 }
+
+.hidden{
+    display: none;
+}
 </style>
 
 <div class="col-lg-9">
@@ -31,8 +35,8 @@ img{
     <div class="row ">
 
         <div class="row item">
-                <span class="hidden"><?php echo $prodId; ?></span>
-                <span class="hidden"><?php echo $catgId; ?></span>
+                <span class="hidden category"><?php echo $catgId; ?></span>
+                <span class="hidden product"><?php echo $prodId; ?></span>
             <img class="card-img-top" src="http://placehold.it/700x400" alt="">
         </div>
         
@@ -55,13 +59,13 @@ $(document).ready(function(){
     $('#addtocart').click(function(){
         <?php if($this->session->userdata('ecmo-loggedin')){ ?>
             $.post('<?php echo site_url('checkout/addtocart'); ?>', {
-                catgId: $('span').text()
-                prodId: $('span').text()
+                catgId: $('span.category').text(),
+                prodId: $('span.product').text()
             });
         <?php
         }
         ?>
-        window.location = "<?php echo site_url('checkout/viewcart'); ?>";
+        window.location = "<?php echo site_url('checkout/viewcart?catg_id='.$catgId.'&prod_id='.$prodId.''); ?>";
     });
 
     $('#buynow').click(function(){

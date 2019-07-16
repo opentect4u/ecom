@@ -37,7 +37,7 @@ class Checkouts extends CI_Controller {
 		
 		$data_array = array(
 			"user_id" => $this->session->userdata('ecmo-loggedin')->user_id,
-			"category_id" => $this->input->post('prodId'),
+			"category_id" => $this->input->post('catgId'),
 			"prod_id" => $this->input->post('prodId'),
 			"id" => $maxCode
 		);
@@ -52,7 +52,20 @@ class Checkouts extends CI_Controller {
 
 		if($this->session->userdata('ecmo-loggedin')){
 
-			$data['viewcart'] = $this->Checkout->f_get_particulars('td_cart', NULL, array('user_id' => $this->session->userdata('ecmo-loggedin')->user_id), 0);
+			$select = array(
+				"t.user_id", "c.catg_id", "c.catg_desc", "p.prod_id", "p.prod_desc",
+				"p.prod_name"
+			);
+
+			$where = array(
+
+				"t.user_id" => $this->session->userdata('ecmo-loggedin')->user_id,
+				"t.category_id = c.catg_id" => NULL,
+				"p.catg_id = c.catg_id" => NULL,
+				"t.prod_id = p.prod_id" => NULL
+
+			);
+			$data['viewcart'] = $this->Checkout->f_get_particulars('td_cart t, md_category c, md_products p', $select, $where, 0);
 
 			$this->load->view('viewcart', $data);
 

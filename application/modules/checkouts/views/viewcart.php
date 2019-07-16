@@ -44,7 +44,7 @@
       <div class="row">
         
     <?php
-        echo $cart->category_id.' '.$cart->product_id;
+        echo $cart->prod_name;
     ?>
         <button type="button" class="btn btn-success">Place Order</button>
         <button type="button" class="btn btn-danger">Remove Order</button>
